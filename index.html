@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>	
@@ -184,13 +185,7 @@
                      
                 </div>
             </div>
-            <div class='data-container'>
-                <div class='data-title'>
-                    Kode Verifikasi (dari URL)
-                </div>
-                <div class='data-content' id='verificationCode'>
-                    </div>
-            </div>
+                                                    
             <div class='disclaimer-container'>
                 <span>&ldquo;Disclaimer: Semua informasi dalam QR Code dibuat oleh KAP yang bersangkutan, DPPPK tidak bertanggung jawab atas kesalahan informasi yang disampaikan KAP.&ldquo;</span>
             </div>
@@ -204,7 +199,7 @@
     <script>
         // Fungsi untuk memformat tanggal dan waktu
         function formatDate(date) {
-            const months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember']; // Mengubah ke Bahasa Indonesia
+            const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
             const day = date.getDate();
             const month = months[date.getMonth()];
             const year = date.getFullYear();
@@ -221,38 +216,6 @@
             const now = new Date();
             const timestampElement = document.getElementById('timestamp');
             timestampElement.textContent = `dibuat oleh sistem pada hari ${formatDate(now)}`;
-
-            // --- Bagian baru untuk memproses parameter URL ---
-            const urlParams = new URLSearchParams(window.location.search);
-            const code = urlParams.get('code'); // Mengambil nilai dari parameter 'code'
-            const verificationCodeElement = document.getElementById('verificationCode');
-
-            if (code) {
-                verificationCodeElement.textContent = code;
-                // Anda bisa menambahkan logika di sini untuk memuat data berdasarkan 'code'.
-                // Misalnya, jika Anda memiliki data dalam objek JavaScript statis:
-                // const dataVerifikasi = {
-                //     'ab03194a-015b-4f13-816a-1ee077a4d53c': {
-                //         namaKAP: 'KAP Contoh A',
-                //         namaKlien: 'PT. Demo Sejahtera',
-                //         // ... data lainnya
-                //     },
-                //     'kode-lainnya': { /* ... */ }
-                // };
-                //
-                // const dataUntukKodeIni = dataVerifikasi[code];
-                // if (dataUntukKodeIni) {
-                //     document.querySelector('.data-content[data-field="kap"]').textContent = dataUntukKodeIni.namaKAP;
-                //     // Lanjutkan untuk field lainnya, pastikan Anda menambahkan 'data-field' atribut di HTML jika ingin menargetkan spesifik
-                // } else {
-                //     // Jika kode tidak ditemukan, Anda bisa menampilkan pesan error atau data default
-                //     verificationCodeElement.textContent = "Kode verifikasi tidak valid atau tidak ditemukan.";
-                // }
-
-            } else {
-                verificationCodeElement.textContent = "Tidak ada kode verifikasi yang diberikan dalam URL.";
-            }
-            // --- Akhir bagian baru ---
         });
     </script>
 </body>
